@@ -1,24 +1,25 @@
 # Site settings
-title: PHOTORAMA
-email: ""
-description: "Photo Journal"
+title: VISION BY CURTIS Fotograf und Videograf aus Neusiedl am See 
+email: "info@curtis.at"
+description: "VISION BY CURTIS"
 url: "https://page.curtis.at"
 baseurl: "/"
-facebook_username: "test"
-twitter_username: ""
-instagram_username: ""
-github_username:  ""
-deviantart_username: ""
-flickr_username: ""
-discus_shortname: ""
+facebook_username: "visionbycurtis"
+#twitter_username: ""
+instagram_username: "vision_by_curtis"
+github_username:  "visionbycurtis"
+#deviantart_username: ""
+#flickr_username: ""
+#discus_shortname: ""
 share: true
 
 # Owner/author information
 owner:
-  name:   photorama
+  name:   Vision by Curtis Fotograf aus Neusiedl am See
   avatar: avatar.png
   favicon: favicon.ico
-  info: photography website template
+  info: "Fotograf aus Neusiedl am See. Spezialisiert auf Portrait, Akt, Hochzeiten und Events. Kreative Fotografie mit Leidenschaft."
+  location: Neusiedl am See, Austria
 
 # Settings for comments helper
 # Set 'provider' to the comment provider you want to use. (i.e.  Disqus, Intense Debate, livefyre, or Facebook Comments)
@@ -33,9 +34,11 @@ comments :
 
 # Internal nav
 nav:
-  - GALLERY: "https://page.curtis.at/gallery/"  
-  - JOURNAL: "https://page.curtis.at/journal/"
+  - PORTFOLIO: "https://page.curtis.at/portfolio/"
+  - ANGEBOTE: "https://page.curtis.at/angebote/"  
+  #- JOURNAL: "https://page.curtis.at/journal/"
   - ABOUT: "https://page.curtis.at/about/"
+  #- CONTACT: "https://page.curtis.at/contact/"
 
 # All translation keys
 translations:
