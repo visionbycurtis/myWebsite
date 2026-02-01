@@ -114,21 +114,23 @@ hr.small {
     padding-bottom: 10px;
   }
   
-  /* Menü-Links: Weiß mit passendem Schatten statt schwarzem Rand */
+  /* Menü-Links: Hintergrund transparent zwingen, auch beim Klicken */
   .navbar-custom .nav li a {
     color: #E6E6E6 !important;
-    /* Hier wird der "schwarze Rand" durch deinen dunklen Blauton ersetzt */
-    text-shadow: 1px 1px 2px #29353C !important; 
+    background-color: transparent !important; /* WICHTIG: Kein schwarzer Kasten */
     padding: 10px 15px;
     text-align: center;
-    border: none !important; /* Entfernt eventuelle Rahmenlinien */
+    border: none !important; 
+    outline: none !important;
   }
   
-  /* Falls beim Hovern auch die Farbe angepasst werden soll */
+  /* Verhindert Hintergrundfarbe beim Antippen (Active/Focus) */
   .navbar-custom .nav li a:hover,
-  .navbar-custom .nav li a:focus {
+  .navbar-custom .nav li a:focus,
+  .navbar-custom .nav li a:active {
+    background-color: transparent !important;
     color: #AAC7D8 !important; /* Sonata Blau beim Antippen */
-    text-shadow: 1px 1px 5px #29353C !important;
+    outline: none !important;
   }
 
   /* Header: Platz für das Logo schaffen */
