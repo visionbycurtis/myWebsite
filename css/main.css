@@ -653,3 +653,40 @@ img::-moz-selection {
     margin-bottom: 15px;
     color: #AAC7D8;
 }
+
+/* LIGHTBOX BUTTON STYLES (Optional: Falls du die Buttons in der Lightbox behalten willst)
+   Diese Styles sind nützlich, falls du im Slider auf ein Bild klickst und es in der Lightbox öffnest.
+*/
+.lightbox-nav-container {
+    padding-top: 10px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    margin-top: 10px;
+}
+.lb-btn {
+    background: transparent;
+    border: 1px solid #AAC7D8;
+    color: #fff;
+    padding: 5px 15px;
+    margin: 0 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.lb-btn:hover {
+    background: #AAC7D8;
+    color: #000;
+}
+.lb-btn-close {
+    border-color: #fff;
+    font-weight: bold;
+}
+.lb-title {
+    display: block;
+    font-size: 16px;
+    color: #AAC7D8;
+    margin-bottom: 10px;
+}
