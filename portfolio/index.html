@@ -11,7 +11,7 @@ active: portfolio
 <div class="container-fluid" style="padding: 0; overflow: hidden;">
     
     <div class="row">
-        <div class="col-lg-12 text-center" style="margin-bottom: 30px; margin-top: 20px;">
+        <div class="col-lg-12 text-center" style="margin-bottom: 20px; margin-top: 20px;">
             <p class="lead">Wische durch meine Arbeiten</p>
         </div>
     </div>
@@ -29,11 +29,8 @@ active: portfolio
 
                     <div class="swiper-slide">
                         <a href="{{ site.baseurl }}{{ file.path }}" title="{{ filename }}" class="slider-link">
-                            <img src="{{ site.baseurl }}{{ file.path }}" alt="{{ filename }}" loading="lazy">
+                            <img src="{{ site.baseurl }}{{ file.path }}" alt="{{ filename }} - Fotografie Curtis" loading="lazy">
                         </a>
-                        <div class="slide-caption">
-                            <h5>{{ filename }}</h5>
-                        </div>
                     </div>
 
                     {% endif %}
@@ -43,7 +40,6 @@ active: portfolio
         
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
     </div>
 
     <hr>
@@ -65,39 +61,39 @@ active: portfolio
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     var swiper = new Swiper('.portfolio-slider', {
-        // Kern-Logik für den "Halb-Sichtbar" Effekt:
-        slidesPerView: 'auto',   // Slide-Breite wird per CSS gesteuert
-        centeredSlides: true,    // Aktuelles Bild immer in der Mitte
-        spaceBetween: 30,        // Abstand zwischen den Bildern
-        loop: true,              // Endlos-Schleife
-        grabCursor: true,        // Hand-Cursor
+        // "Center Mode" Logik
+        slidesPerView: 'auto',   // Wichtig: Slide-Breite wird per CSS gesteuert
+        centeredSlides: true,    // Aktives Bild in der Mitte
+        spaceBetween: 40,        // Etwas mehr Luft zwischen den Bildern für Eleganz
+        loop: true,              // Endlos
+        grabCursor: true,        // Greif-Cursor
         
-        // Geschwindigkeit und Physik
-        speed: 600,
-        effect: 'coverflow',     // Optional: Coverflow für 3D Effekt, oder 'slide' für flach
+        // Physik & Geschwindigkeit
+        speed: 800,              // Langsamerer Übergang wirkt hochwertiger
+        effect: 'coverflow',
         coverflowEffect: {
-            rotate: 0,           // Keine Drehung
+            rotate: 0,           // Keine Drehung (moderner)
             stretch: 0,
-            depth: 100,          // Tiefe (kleinere Bilder im Hintergrund)
+            depth: 150,          // Stärkerer Tiefeneffekt
             modifier: 1,
-            slideShadows: false, // Schatten aus
+            slideShadows: true,  // Schatten anlassen für räumliche Tiefe
         },
 
-        // Navigation
+        // Pfeile
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
         
-        // Autoplay (optional, hier deaktiviert damit es ruhiger wirkt)
-        // autoplay: { delay: 3000 },
+        // Punkte (Pagination) wurden hier entfernt
+        
+        // Keyboard Steuerung für Desktop-User
+        keyboard: {
+            enabled: true,
+        },
     });
 
-    // Lightbox auch im Slider aktivieren
+    // Lightbox Integration
     jQuery('.portfolio-slider').magnificPopup({
         delegate: 'a.slider-link',
         type: 'image',
@@ -107,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <style>
-/* Überschreibe Container-Breite für den Slider, damit er volle Breite nutzen kann */
+/* Reset Container Padding für volle Breite */
 .container-fluid {
     padding-left: 0;
     padding-right: 0;
@@ -125,83 +121,70 @@ document.addEventListener('DOMContentLoaded', function () {
     background-position: center;
     background-size: cover;
     
-    /* Hier passiert die Magie für "Halb sichtbar": */
-    width: 60%;  /* Desktop: Bild nimmt 60% ein, Ränder zeigen jeweils 20% vom nächsten */
-    height: 500px; /* Feste Höhe für Einheitlichkeit */
+    /* MÄCHTIGES DESIGN (Viewport Units) */
+    /* 70vh bedeutet 70% der Bildschirmhöhe. Das ist sehr groß und eindrucksvoll. */
+    height: 70vh; 
+    width: 65%;   /* Auf Desktop schön breit */
     
-    border-radius: 8px;
+    border-radius: 4px;
     overflow: hidden;
-    transition: transform 0.3s;
-    opacity: 0.4; /* Inaktive Bilder sind blasser */
-    transform: scale(0.9); /* Inaktive Bilder sind kleiner */
+    transition: all 0.5s; /* Weicher Übergang für alles */
+    
+    /* Inaktive Bilder: */
+    opacity: 0.3;         /* Stark abdunkeln, damit Fokus auf Mitte liegt */
+    transform: scale(0.85); /* Etwas kleiner */
+    filter: grayscale(100%); /* Optional: Inaktive Bilder s/w machen? Falls nicht gewünscht, Zeile löschen */
 }
 
 /* Das aktive Bild (Mitte) */
 .swiper-slide-active {
     opacity: 1;
-    transform: scale(1); /* Volle Größe */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3); /* Schöner Schatten */
+    transform: scale(1); 
+    filter: grayscale(0%);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Kräftiger Schatten für "Pop"-Effekt */
     z-index: 10;
 }
 
-/* Bild-Styling */
 .swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Füllt den Bereich perfekt aus */
+    object-fit: cover;
 }
 
-/* Bildunterschrift im Slider */
-.slide-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.swiper-slide-active .slide-caption {
-    opacity: 1; /* Text nur beim aktiven Bild zeigen */
-}
-
-.slide-caption h5 {
-    margin: 0;
-    color: #AAC7D8;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Custom Navigation Farben */
+/* Pfeil-Navigation Styling */
 .swiper-button-next, .swiper-button-prev {
-    color: #AAC7D8;
-    background: rgba(41, 53, 60, 0.8);
-    width: 50px;
-    height: 50px;
+    color: #AAC7D8; /* Deine Farbe */
+    background: rgba(41, 53, 60, 0.5); /* Halbtransparentes Dunkelgrau */
+    width: 60px; /* Größere Klickfläche */
+    height: 60px;
     border-radius: 50%;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px); /* Milchglas-Effekt */
+    transition: background 0.3s;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    background: rgba(41, 53, 60, 0.9);
 }
 
 .swiper-button-next:after, .swiper-button-prev:after {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
 }
 
-.swiper-pagination-bullet-active {
-    background-color: #AAC7D8;
-}
-
-/* RESPONSIVE ANPASSUNGEN */
+/* RESPONSIVE ANPASSUNGEN (Handy) */
 @media (max-width: 768px) {
     .swiper-slide {
-        width: 85%; /* Am Handy breiter, damit man mehr sieht */
-        height: 350px; /* Etwas niedriger am Handy */
+        /* Handy: Fast volle Breite, damit man Details erkennt */
+        width: 90%; 
+        /* Handy: Etwas weniger hoch als Desktop, aber immer noch mächtig */
+        height: 60vh; 
+    }
+    
+    /* Pfeile am Handy ausblenden? Oft stören sie beim Wischen. 
+       Falls du sie behalten willst, lösche diesen Block. */
+    .swiper-button-next, .swiper-button-prev {
+        display: none; 
     }
 }
 </style>
