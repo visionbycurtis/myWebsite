@@ -6,40 +6,31 @@ header-img: "img/misc-bg.jpg"
 active: portfolio
 ---
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
 <div class="container-fluid" style="padding: 0; overflow: hidden;">
     
     <div class="row">
         <div class="col-lg-12 text-center" style="margin-bottom: 20px; margin-top: 20px;">
-            <p class="lead">Wische durch meine Arbeiten</p>
+            <p class="lead">Entdecke meine neuesten Arbeiten</p>
         </div>
     </div>
 
-    <div class="swiper portfolio-slider">
-        <div class="swiper-wrapper">
-            {% for file in site.static_files %}
-                {% if file.path contains 'portfolio/assets/' %}
-                    
-                    {% assign ext = file.extname | downcase %}
-                    
-                    {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.gif' or ext == '.webp' %}
-                    
-                    {% assign filename = file.basename | replace: '_', ' ' | replace: '-', ' ' | capitalize %}
+    <div class="portfolio-grid" id="portfolio-grid">
+        {% for file in site.static_files %}
+            {% if file.path contains 'portfolio/assets/' %}
+                
+                {% assign ext = file.extname | downcase %}
+                
+                {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.gif' or ext == '.webp' %}
+                
+                {% assign filename = file.basename | replace: '_', ' ' | replace: '-', ' ' | capitalize %}
 
-                    <div class="swiper-slide">
-                        <a href="{{ site.baseurl }}{{ file.path }}" title="{{ filename }}" class="slider-link">
-                            <img src="{{ site.baseurl }}{{ file.path }}" alt="{{ filename }} - Fotografie Curtis" loading="lazy">
-                        </a>
-                    </div>
+                <a href="{{ site.baseurl }}{{ file.path }}" title="{{ filename }}" class="portfolio-item">
+                    <img src="{{ site.baseurl }}{{ file.path }}" alt="{{ filename }} - Fotografie Curtis" loading="lazy">
+                </a>
 
-                    {% endif %}
                 {% endif %}
-            {% endfor %}
-        </div>
-        
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+            {% endif %}
+        {% endfor %}
     </div>
 
     <hr>
@@ -56,135 +47,85 @@ active: portfolio
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    var swiper = new Swiper('.portfolio-slider', {
-        // "Center Mode" Logik
-        slidesPerView: 'auto',   // Wichtig: Slide-Breite wird per CSS gesteuert
-        centeredSlides: true,    // Aktives Bild in der Mitte
-        spaceBetween: 40,        // Etwas mehr Luft zwischen den Bildern für Eleganz
-        loop: true,              // Endlos
-        grabCursor: true,        // Greif-Cursor
-        
-        // Physik & Geschwindigkeit
-        speed: 800,              // Langsamerer Übergang wirkt hochwertiger
-        effect: 'coverflow',
-        coverflowEffect: {
-            rotate: 0,           // Keine Drehung (moderner)
-            stretch: 0,
-            depth: 150,          // Stärkerer Tiefeneffekt
-            modifier: 1,
-            slideShadows: true,  // Schatten anlassen für räumliche Tiefe
-        },
+    // 1. Bilder mischen (Shuffle-Algorithmus)
+    const grid = document.getElementById('portfolio-grid');
+    for (let i = grid.children.length; i >= 0; i--) {
+        grid.appendChild(grid.children[Math.random() * i | 0]);
+    }
 
-        // Pfeile
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        
-        // Punkte (Pagination) wurden hier entfernt
-        
-        // Keyboard Steuerung für Desktop-User
-        keyboard: {
-            enabled: true,
-        },
-    });
-
-    // Lightbox Integration
-    jQuery('.portfolio-slider').magnificPopup({
-        delegate: 'a.slider-link',
+    // 2. Lightbox Integration aktivieren
+    jQuery('#portfolio-grid').magnificPopup({
+        delegate: 'a.portfolio-item',
         type: 'image',
-        gallery: { enabled: true }
+        gallery: { enabled: true },
+        // Kleiner Bonus: Weicherer Übergang beim Öffnen
+        removalDelay: 300,
+        mainClass: 'mfp-fade'
     });
 });
 </script>
 
 <style>
-/* Reset Container Padding für volle Breite */
+/* Reset Container Padding */
 .container-fluid {
     padding-left: 0;
     padding-right: 0;
 }
 
-/* Slider Dimensionen */
-.portfolio-slider {
+/* CSS GRID LAYOUT 
+  Passt die Anzahl der Spalten automatisch an die Bildschirmbreite an.
+*/
+.portfolio-grid {
+    display: grid;
+    /* Auf Desktop ca. 3-4 Spalten (min. 300px), füllt immer den Platz aus */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 15px; /* Abstand zwischen den Bildern */
+    padding: 0 15px 40px 15px;
     width: 100%;
-    padding-top: 20px;
-    padding-bottom: 50px;
+    max-width: 1400px; /* Optional: Maximale Breite des Rasters */
+    margin: 0 auto;
 }
 
-/* Der einzelne Slide */
-.swiper-slide {
-    background-position: center;
-    background-size: cover;
-    
-    /* MÄCHTIGES DESIGN (Viewport Units) */
-    /* 70vh bedeutet 70% der Bildschirmhöhe. Das ist sehr groß und eindrucksvoll. */
-    height: 70vh; 
-    width: 65%;   /* Auf Desktop schön breit */
-    
-    border-radius: 4px;
+/* Das einzelne Bild-Element im Raster */
+.portfolio-item {
+    display: block;
+    position: relative;
     overflow: hidden;
-    transition: all 0.5s; /* Weicher Übergang für alles */
-    
-    /* Inaktive Bilder: */
-    opacity: 0.3;         /* Stark abdunkeln, damit Fokus auf Mitte liegt */
-    transform: scale(0.85); /* Etwas kleiner */
-    filter: grayscale(100%); /* Optional: Inaktive Bilder s/w machen? Falls nicht gewünscht, Zeile löschen */
+    border-radius: 4px;
+    /* Optional: Quadratische Bilder erzwingen (1:1). 
+       Für das Originalformat, entferne die "aspect-ratio"-Zeile. */
+    aspect-ratio: 1 / 1; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
 }
 
-/* Das aktive Bild (Mitte) */
-.swiper-slide-active {
-    opacity: 1;
-    transform: scale(1); 
-    filter: grayscale(0%);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Kräftiger Schatten für "Pop"-Effekt */
-    z-index: 10;
+.portfolio-item:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-.swiper-slide img {
+.portfolio-item img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Schneidet die Bilder perfekt auf das Format zu */
+    transition: transform 0.5s ease;
 }
 
-/* Pfeil-Navigation Styling */
-.swiper-button-next, .swiper-button-prev {
-    color: #AAC7D8; /* Deine Farbe */
-    background: rgba(41, 53, 60, 0.5); /* Halbtransparentes Dunkelgrau */
-    width: 60px; /* Größere Klickfläche */
-    height: 60px;
-    border-radius: 50%;
-    backdrop-filter: blur(5px); /* Milchglas-Effekt */
-    transition: background 0.3s;
-}
-
-.swiper-button-next:hover, .swiper-button-prev:hover {
-    background: rgba(41, 53, 60, 0.9);
-}
-
-.swiper-button-next:after, .swiper-button-prev:after {
-    font-size: 24px;
-    font-weight: bold;
+/* Zoom-Effekt beim Darüberfahren mit der Maus */
+.portfolio-item:hover img {
+    transform: scale(1.05);
 }
 
 /* RESPONSIVE ANPASSUNGEN (Handy) */
 @media (max-width: 768px) {
-    .swiper-slide {
-        /* Handy: Fast volle Breite, damit man Details erkennt */
-        width: 90%; 
-        /* Handy: Etwas weniger hoch als Desktop, aber immer noch mächtig */
-        height: 60vh; 
-    }
-    
-    /* Pfeile am Handy ausblenden? Oft stören sie beim Wischen. 
-       Falls du sie behalten willst, lösche diesen Block. */
-    .swiper-button-next, .swiper-button-prev {
-        display: none; 
+    .portfolio-grid {
+        /* Auf dem Handy etwas kleinere Mindestbreite für 2 Spalten, 
+           oder ändere es auf minmax(100%, 1fr) für 1 Spalte */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-gap: 10px;
+        padding: 0 10px 30px 10px;
     }
 }
 </style>
