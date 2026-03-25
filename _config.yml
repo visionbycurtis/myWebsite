@@ -2,7 +2,7 @@
 title: VISION BY CURTIS Fotograf und Videograf aus Neusiedl am See 
 email: "info@curtis.at"
 description: "VISION BY CURTIS"
-url: "https://page.curtis.at"
+url: "https://curtis.at"
 baseurl: "/"
 facebook_username: "visionbycurtis"
 #twitter_username: ""
@@ -34,11 +34,11 @@ comments :
 
 # Internal nav
 nav:
-  - PORTFOLIO: "https://page.curtis.at/portfolio/"
-  - ANGEBOTE: "https://page.curtis.at/angebote/"  
-  #- JOURNAL: "https://page.curtis.at/journal/"
-  - ABOUT: "https://page.curtis.at/about/"
-  #- CONTACT: "https://page.curtis.at/contact/"
+  - PORTFOLIO: "https://curtis.at/portfolio/"
+  - ANGEBOTE: "https://curtis.at/angebote/"  
+  #- JOURNAL: "https://curtis.at/journal/"
+  - ABOUT: "https://curtis.at/about/"
+  #- CONTACT: "https://curtis.at/contact/"
 
 # All translation keys
 translations:
