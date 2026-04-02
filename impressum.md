@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Impressum"
+header-img: "img/bannerpics/banner02.jpeg" 
+---
+
+
+
 Informationen und Offenlegung gemäß § 5 (1) ECG, § 25 MedienG, § 63 GewO und § 14 UGB.
 
 
