@@ -2,7 +2,7 @@
 layout: page
 title: "Portfolio"
 description: "Einblick in meine Arbeiten: Hochzeiten, Immobilien, Food & Events im Burgenland."
-header-img: "img/misc-bg.jpg"
+header-img: "img/bannerpics/banner01.jpg"
 active: portfolio
 ---
 
@@ -24,9 +24,9 @@ active: portfolio
                 
                 {% assign filename = file.basename | replace: '_', ' ' | replace: '-', ' ' | capitalize %}
 
-                <a href="{{ site.baseurl }}{{ file.path }}" title="{{ filename }}" class="portfolio-item">
+                <div class="portfolio-item" title="{{ filename }}">
                     <img src="{{ site.baseurl }}{{ file.path }}" alt="{{ filename }} - Fotografie Curtis" loading="lazy">
-                </a>
+                </div>
 
                 {% endif %}
             {% endif %}
@@ -54,16 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let i = grid.children.length; i >= 0; i--) {
         grid.appendChild(grid.children[Math.random() * i | 0]);
     }
-
-    // 2. Lightbox Integration aktivieren
-    jQuery('#portfolio-grid').magnificPopup({
-        delegate: 'a.portfolio-item',
-        type: 'image',
-        gallery: { enabled: true },
-        // Kleiner Bonus: Weicherer Übergang beim Öffnen
-        removalDelay: 300,
-        mainClass: 'mfp-fade'
-    });
+    
+    // Die Lightbox (Magnific Popup) wurde hier entfernt, da die Bilder nicht mehr klickbar sein sollen.
 });
 </script>
 
@@ -113,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
     transition: transform 0.5s ease;
 }
 
-/* Zoom-Effekt beim Darüberfahren mit der Maus */
+/* Zoom-Effekt beim Darüberfahren mit der Maus (wurde beibehalten, da es optisch ansprechend ist) */
 .portfolio-item:hover img {
     transform: scale(1.05);
 }
