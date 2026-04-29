@@ -1,54 +1,27 @@
 # Site settings
-title: VISION BY CURTIS Fotograf und Videograf aus Neusiedl am See 
+title: "VISION BY CURTIS | Fotograf & Videograf Neusiedl am See, Wien & Burgenland"
 email: "info@curtis.at"
-description: "VISION BY CURTIS"
+description: "Professioneller Fotograf & Videograf in Neusiedl am See, Wien und Burgenland. Spezialisiert auf Hochzeiten, Portraits, Akt und Events. Kreative Fotografie mit Leidenschaft."
 url: "https://curtis.at"
-baseurl: "/"
+baseurl: "" # Meistens leer lassen, wenn die Seite direkt unter curtis.at erreichbar ist
 facebook_username: "visionbycurtis"
-#twitter_username: ""
 instagram_username: "vision_by_curtis"
-github_username:  "visionbycurtis"
-#deviantart_username: ""
-#flickr_username: ""
-#discus_shortname: ""
+github_username: "visionbycurtis"
 share: true
 
 # Owner/author information
 owner:
-  name:   Vision by Curtis Fotograf aus Neusiedl am See
-  avatar: avatar.png
-  favicon: favicon.ico
-  info: "Fotograf aus Neusiedl am See. Spezialisiert auf Portrait, Akt, Hochzeiten und Events. Kreative Fotografie mit Leidenschaft."
-  location: Neusiedl am See, Austria
-
-# Settings for comments helper
-# Set 'provider' to the comment provider you want to use. (i.e.  Disqus, Intense Debate, livefyre, or Facebook Comments)
-# Set 'provider' to false to turn commenting off globally.
-#Set 'provider: false' to disable comments globally.
-# Disable comments for individual pages/posts by specifying 'comments: false' in the page/post YAML Front Matter.
-#
-comments :
-  provider : disqus
-  disqus :
-    short_name : ""
+  name: "Vision by Curtis"
+  avatar: "avatar.png"
+  favicon: "favicon.ico"
+  info: "Ihr Fotograf in Neusiedl am See & Wien. Kreative Fotografie für Hochzeiten, Events, Business und Portraits im gesamten Burgenland und Niederösterreich."
+  location: "Neusiedl am See, Austria"
 
 # Internal nav
 nav:
   - PORTFOLIO: "https://curtis.at/portfolio/"
-  - ANGEBOTE: "https://curtis.at/angebote/"  
-  #- JOURNAL: "https://curtis.at/journal/"
+  - ANGEBOTE: "https://curtis.at/angebote/"
   - ABOUT: "https://curtis.at/about/"
-  #- CONTACT: "https://curtis.at/contact/"
-
-# All translation keys
-translations:
- # 404.html
-  permalink: "/404.html"
-
-# Server
-destination:      	 ./_site
-port:             	 4000
-
 
 # Build settings
 markdown: kramdown
@@ -56,21 +29,18 @@ highlighter: rouge
 permalink: pretty
 paginate: 5
 paginate_path: "/journal/page:num/"
-permalink: "/journal/:title/"
-categories_path: "/journal/category/"
-tags_path: "/journal/tag/"
-gems: 
- - jekyll-paginate
+
+# Plugins (WICHTIG: Das aktiviert die Sitemap und SEO-Tags automatisch)
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 
-# SiteMap
+# Sitemap Einstellungen
 sitemap:
-    file: "/sitemap.xml"
-    exclude:
-        - "/atom.xml"
-        - "/feed.xml"
-        - "/feed/index.xml"
-    include_posts:
-        - "/writing/"
-    change_frequency_name: "change_frequency"
-    priority_name: "priority"
+  exclude:
+    - "/404.html"
+    - "/atom.xml"
+    - "/feed.xml"
