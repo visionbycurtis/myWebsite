@@ -1,13 +1,15 @@
 ---
 layout: post
 title: "Behind the Scenes: Ein Tag als Videograf im Burgenland"
-description: "Wie läuft eigentlich ein Videodreh ab? Ein Blick hinter die Kulissen meiner Arbeit als Videograf in Wien und Umgebung."
-date: 2026-05-14 09:00:00 +0200
-categories: journal
+subtitle: "Wie läuft eigentlich ein Videodreh ab? Ein Blick hinter die Kulissen meiner Arbeit als Videograf in Wien und Umgebung."
+date: "2026-05-14"
+active: "journal"
 tag: [videografie, behind-the-scenes, personal]
+header-img: "img/postcover/pc008.jpg"
 image:
   feature: bts-videodreh.jpg
 ---
+
 
 Man sieht immer nur das fertige, polierte Endprodukt. Ein knackiges, 60-sekündiges Video mit perfekten Schnitten und color-gegradeten Farben. Aber was passiert eigentlich *vor* und *während* des Drehs?
 
