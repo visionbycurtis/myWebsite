@@ -1,87 +1,97 @@
 ---
 layout: page
-description: "Journal"
-title: "Writings"
+title: "Journal: Einblicke in Fotografie & Videografie – Vision by Curtis"
+description: "Entdecke Geschichten hinter den Shoots, Tipps für dein Branding und visuelles Storytelling aus Neusiedl am See, Wien und dem Burgenland."
 active: journal
 header-img: "img/writing-bg.jpg"
 ---
 
-<head>
-<link rel="stylesheet" href="{{ site.baseurl }}/css/journal.css" media="screen" />
-</head>
-
-<body class="journal">
 <div class="archive">
-  <h1 class="archive-title" style="display:inline-block;"> POSTS </h1>
+  <h1 class="archive-title">Journal & Insights</h1>
+  <p style="font-family: 'Open Sans', sans-serif; max-width: 800px; line-height: 1.6; margin-bottom: 2em;">
+    Willkommen in meinem Journal. Hier teile ich Gedanken zu <strong>visuellem Storytelling</strong>, Einblicke in meine Arbeit als <strong>Fotograf und Videograf im Burgenland und Wien</strong> sowie Tipps, wie du die Klarheit und Intention deiner Marke durch Bilder stärkst.
+  </p>
 
-<div style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; display:inline-block;margin-left:.5em;">
-    Browse by <a href="{{ site.baseurl }}/journal/category/">Category</a> or <a href="{{ site.baseurl }}/journal/tag/">Tag</a>
+  <div style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; margin-bottom: 2em; padding: 10px; background: #f9f9f9; border-radius: 5px;">
+    <strong>Filter:</strong> 
+    <a href="{{ site.baseurl }}/journal/category/" style="margin: 0 10px;">Nach Kategorie</a> | 
+    <a href="{{ site.baseurl }}/journal/tag/" style="margin: 0 10px;">Nach Tags</a>
   </div>
 </div>
+
+<link rel="stylesheet" href="{{ site.baseurl }}/css/journal.css" media="screen" />
 
 <section class="section--postsWrapper">
   <div class="container">
     <div class="blockGroup">
-      <ul class="blockGroup-list">
+      <ul class="blockGroup-list" style="list-style: none; padding: 0;">
 
-{% for post in paginator.posts %}
+      {% for post in paginator.posts %}
+        <li class="block" style="margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+          <div class="postArticle-wrapper">
+            <div class="post-preview">
+                
+              <a href="{{ post.url | prepend: site.baseurl }}" style="text-decoration: none; color: inherit;">
+                {% if post.image.feature %}
+                  <div class="post-image" style="margin-bottom: 15px;">
+                    <img src="{{ site.baseurl }}/img/postcover/{{ post.image.feature }}" 
+                         alt="{{ post.title }}" 
+                         style="width: 100%; height: auto; border-radius: 4px; transition: opacity 0.3s;">
+                  </div>
+                {% endif %}
+                
+                <h2 class="post-title" style="font-family: 'Open Sans', sans-serif; font-size: 22px; margin-top: 0;"> 
+                  {{ post.title }}
+                </h2>
+              </a>
+              
+              {% if post.subtitle %}
+                <p class="post-subtitle" style="font-family: 'Open Sans', sans-serif; font-size: 14px; color: #666; margin-top: -10px;"> 
+                  {{ post.subtitle }}
+                </p>
+              {% endif %}
 
+              <p style="font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 1.5;">
+                {{ post.content | strip_html | truncatewords: 30 }}
+              </p>
+                
+              <p class="post-meta" style="font-family: 'Open Sans', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #999;"> 
+                {{ post.date | date: "%d. %B %Y" }} • 
+                <a href="{{ post.url | prepend: site.baseurl }}" style="color: #000; font-weight: bold;">Weiterlesen →</a>
+              </p>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
 
- {% assign post = site.posts.first %}
-  {% assign content = post.content %}
-  
-<li class="block">
-<div class="postArticle-wrapper">
-
-<div class="post-preview" style="border-bottom: none;">
-
-    
-<a href="{{ post.url | prepend: site.baseurl }}">
-        {% if post.image.feature %}
-	<img src="{{ site.baseurl }}/img/postcover/{{ post.image.feature }}">
-	{% endif %}
- 
- 
-        <p class="post-title" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 16px; margin-left: 1em;"> &#9658; {{ post.title }}
-        </p>
-</a>
-        {% if post.subtitle %}
-        <p class="post-subtitle" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 12px; margin-left: 1em;"> {{ post.subtitle }}</p>
-        {% endif %}
-    
-    <p class="post-meta" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 10px; margin-left: 1em;"> Posted on {{ post.date | date: "%B %-d, %Y" }}</p>
-</div>
-
-</div>
-</li>
- {% endfor %}
-<p>&nbsp;</p>
       </ul>
     </div>
   </div>
 </section>
 
-
-<!-- Pager -->
 {% if paginator.total_pages > 1 %}
-<ul class="pager" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;" >
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
+<nav class="pager-nav" style="text-align: center; margin-top: 50px;">
+  <ul class="pager" style="list-style: none; display: inline-flex; align-items: center; font-family: 'Open Sans', sans-serif;">
+      {% if paginator.previous_page %}
+      <li class="previous" style="margin-right: 20px;">
+          <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="text-decoration: none; font-weight: bold;">&larr; Neuere Artikel</a>
+      </li>
+      {% endif %}
 
-<span class="button-height"> Page {{paginator.page}} of {{paginator.total_pages}}</span>
+      <li class="page-number" style="margin: 0 15px; color: #777;"> Seite {{paginator.page}} von {{paginator.total_pages}}</li>
 
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
+      {% if paginator.next_page %}
+      <li class="next" style="margin-left: 20px;">
+          <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="text-decoration: none; font-weight: bold;">Ältere Artikel &rarr;</a>
+      </li>
+      {% endif %}
+  </ul>
+</nav>
 {% endif %}
 
-<br>
-<h6>Image Source: <a href="https://unsplash.com/photos/8muUTAmcWU4">UNSPLASH</a>
-
-</body>
+<footer style="margin-top: 80px; border-top: 1px solid #eee; padding-top: 20px;">
+  <p style="font-size: 12px; color: #999;">
+    Header Bildquelle: <a href="https://unsplash.com/photos/8muUTAmcWU4" target="_blank" rel="nofollow">Unsplash</a> | 
+    Alle anderen Inhalte © {{ site.time | date: '%Y' }} Vision by Curtis
+  </p>
+</footer>
