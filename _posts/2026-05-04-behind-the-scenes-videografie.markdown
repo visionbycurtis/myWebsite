@@ -7,7 +7,7 @@ active: "journal"
 tag: [videografie, behind-the-scenes, personal]
 header-img: "img/postcover/pc008.jpg"
 image:
-  feature: bts-videodreh.jpg
+  feature: "pc008.jpg"
 ---
 
 
