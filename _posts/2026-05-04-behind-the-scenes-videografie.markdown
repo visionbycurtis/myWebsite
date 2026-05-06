@@ -2,7 +2,7 @@
 layout: post
 title: "Behind the Scenes: Ein Tag als Videograf im Burgenland"
 subtitle: "Wie läuft eigentlich ein Videodreh ab? Ein Blick hinter die Kulissen meiner Arbeit als Videograf in Wien und Umgebung."
-date: "2026-05-14"
+date: "2026-05-04"
 active: "journal"
 tag: [videografie, behind-the-scenes, personal]
 header-img: "img/postcover/pc008.jpg"
