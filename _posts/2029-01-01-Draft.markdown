@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Titel"
+subtitle: "Video"
+date: "2030-05-04"
+active: "journal"
+tag: [videografie, behind-the-scenes, personal]
+header-img: "img/postcover/pc008.jpg"
+image:
+  feature: "pc008.jpg"
+---
