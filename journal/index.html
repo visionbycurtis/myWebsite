@@ -8,14 +8,14 @@ header-img: "img/writing-bg.jpg"
 
 <div class="archive">
   <h1 class="archive-title">Journal & Insights</h1>
-  <p style="font-family: 'Open Sans', sans-serif; max-width: 800px; line-height: 1.6; margin-bottom: 2em;">
+  <p style="font-family: 'Open Sans', sans-serif; max-width: 800px; line-height: 1.6; margin-bottom: 2em; color: #cccccc;">
     Willkommen in meinem Journal. Hier teile ich Gedanken zu <strong>visuellem Storytelling</strong>, Einblicke in meine Arbeit als <strong>Fotograf und Videograf im Burgenland und Wien</strong> sowie Tipps, wie du die Klarheit und Intention deiner Marke durch Bilder stärkst.
   </p>
 
-  <div style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; margin-bottom: 2em; padding: 10px; background: #f9f9f9; border-radius: 5px;">
-    <strong>Filter:</strong> 
-    <a href="{{ site.baseurl }}/journal/category/" style="margin: 0 10px;">Nach Kategorie</a> | 
-    <a href="{{ site.baseurl }}/journal/tag/" style="margin: 0 10px;">Nach Tags</a>
+  <div style="font-family: 'Open Sans', Helvetica, Arial, sans-serif; margin-bottom: 2em; padding: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid #333; border-radius: 5px; color: #aaaaaa;">
+    <strong style="color: #ffffff;">Filter:</strong> 
+    <a href="{{ site.baseurl }}/journal/category/" style="margin: 0 10px; color: #aaaaaa; text-decoration: none;">Nach Kategorie</a> | 
+    <a href="{{ site.baseurl }}/journal/tag/" style="margin: 0 10px; color: #aaaaaa; text-decoration: none;">Nach Tags</a>
   </div>
 </div>
 
@@ -27,7 +27,7 @@ header-img: "img/writing-bg.jpg"
       <ul class="blockGroup-list" style="list-style: none; padding: 0;">
 
       {% for post in paginator.posts %}
-        <li class="block" style="margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+        <li class="block" style="margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 20px;">
           <div class="postArticle-wrapper">
             <div class="post-preview">
                 
@@ -40,24 +40,24 @@ header-img: "img/writing-bg.jpg"
                   </div>
                 {% endif %}
                 
-                <h2 class="post-title" style="font-family: 'Open Sans', sans-serif; font-size: 22px; margin-top: 0;"> 
+                <h2 class="post-title" style="font-family: 'Open Sans', sans-serif; font-size: 22px; margin-top: 0; color: #ffffff;"> 
                   {{ post.title }}
                 </h2>
               </a>
               
               {% if post.subtitle %}
-                <p class="post-subtitle" style="font-family: 'Open Sans', sans-serif; font-size: 14px; color: #666; margin-top: -10px;"> 
+                <p class="post-subtitle" style="font-family: 'Open Sans', sans-serif; font-size: 14px; color: #888888; margin-top: -10px;"> 
                   {{ post.subtitle }}
                 </p>
               {% endif %}
 
-              <p style="font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 1.5;">
+              <p style="font-family: 'Open Sans', sans-serif; font-size: 14px; line-height: 1.5; color: #bbbbbb;">
                 {{ post.content | strip_html | truncatewords: 30 }}
               </p>
                 
-              <p class="post-meta" style="font-family: 'Open Sans', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #999;"> 
+              <p class="post-meta" style="font-family: 'Open Sans', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #777777;"> 
                 {{ post.date | date: "%d. %B %Y" }} • 
-                <a href="{{ post.url | prepend: site.baseurl }}" style="color: #000; font-weight: bold;">Weiterlesen →</a>
+                <a href="{{ post.url | prepend: site.baseurl }}" style="color: #ffffff; font-weight: bold; text-decoration: none;">Weiterlesen →</a>
               </p>
             </div>
           </div>
@@ -74,24 +74,24 @@ header-img: "img/writing-bg.jpg"
   <ul class="pager" style="list-style: none; display: inline-flex; align-items: center; font-family: 'Open Sans', sans-serif;">
       {% if paginator.previous_page %}
       <li class="previous" style="margin-right: 20px;">
-          <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="text-decoration: none; font-weight: bold;">&larr; Neuere Artikel</a>
+          <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="text-decoration: none; font-weight: bold; color: #ffffff;">&larr; Neuere Artikel</a>
       </li>
       {% endif %}
 
-      <li class="page-number" style="margin: 0 15px; color: #777;"> Seite {{paginator.page}} von {{paginator.total_pages}}</li>
+      <li class="page-number" style="margin: 0 15px; color: #888888;"> Seite {{paginator.page}} von {{paginator.total_pages}}</li>
 
       {% if paginator.next_page %}
       <li class="next" style="margin-left: 20px;">
-          <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="text-decoration: none; font-weight: bold;">Ältere Artikel &rarr;</a>
+          <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" style="text-decoration: none; font-weight: bold; color: #ffffff;">Ältere Artikel &rarr;</a>
       </li>
       {% endif %}
   </ul>
 </nav>
 {% endif %}
 
-<footer style="margin-top: 80px; border-top: 1px solid #eee; padding-top: 20px;">
-  <p style="font-size: 12px; color: #999;">
-    Header Bildquelle: <a href="https://unsplash.com/photos/8muUTAmcWU4" target="_blank" rel="nofollow">Unsplash</a> | 
+<footer style="margin-top: 80px; border-top: 1px solid #333; padding-top: 20px;">
+  <p style="font-size: 12px; color: #666666;">
+    Header Bildquelle: <a href="https://unsplash.com/photos/8muUTAmcWU4" target="_blank" rel="nofollow" style="color: #888888;">Unsplash</a> | 
     Alle anderen Inhalte © {{ site.time | date: '%Y' }} Vision by Curtis
   </p>
 </footer>
