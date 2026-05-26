@@ -1,6 +1,7 @@
 # Site settings
 title: "VISION BY CURTIS | Fotograf & Videograf Neusiedl am See, Wien & Burgenland"
 email: "info@curtis.at"
+google_analytics: "G-3C6SNMB3CF"
 description: "Professioneller Fotograf & Videograf in Neusiedl am See, Wien und Burgenland. Spezialisiert auf Hochzeiten, Portraits, Akt und Events. Kreative Fotografie mit Leidenschaft."
 url: "https://curtis.at"
 baseurl: "" # Meistens leer lassen, wenn die Seite direkt unter curtis.at erreichbar ist
